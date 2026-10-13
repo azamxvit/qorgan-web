@@ -1,12 +1,24 @@
 import {
-  ArrowUpRight,
   FileSearch,
   Fingerprint,
+  KeyRound,
   LockKeyhole,
   ScanFace,
+  Shield,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Center } from "@/components/ui/center";
+import { Circuit } from "@/components/ui/circuit";
+import { FooterBar } from "@/components/ui/footer-bar";
+import { Heading } from "@/components/ui/heading";
+import { IconFrame } from "@/components/ui/icon-frame";
+import { ModuleCard } from "@/components/ui/module-card";
+import { Screen } from "@/components/ui/screen";
+import { SplitNote } from "@/components/ui/split-note";
+import { Text } from "@/components/ui/text";
+import { TopBar } from "@/components/ui/top-bar";
 
 const services = [
   {
@@ -22,7 +34,7 @@ const services = [
       "Проверка живого контекста",
       "Понятный результат без поспешных выводов",
     ],
-    accent: "cyan",
+    tone: "cyan",
     cta: "Открыть модуль защиты",
   },
   {
@@ -38,117 +50,75 @@ const services = [
       "Анализ AI-артефактов",
       "Прозрачный audit trail результата",
     ],
-    accent: "violet",
+    tone: "violet",
     cta: "Открыть криминалистику",
   },
+] as const;
+
+const signals = [
+  { Icon: Shield, className: "top-[31%] left-[7%]" },
+  { Icon: LockKeyhole, className: "top-[47%] left-[14%]" },
+  { Icon: Fingerprint, className: "top-[27%] right-[8%]" },
+  { Icon: KeyRound, className: "top-[50%] right-[15%]" },
 ];
 
 export default function Home() {
   return (
-    <div className="portal-page">
-      <div className="portal-grid" />
-      <div className="portal-stars portal-stars--one" />
-      <div className="portal-stars portal-stars--two" />
-      <div className="portal-glow portal-glow--cyan" />
-      <div className="portal-glow portal-glow--violet" />
-      <header className="portal-header">
-        <a className="portal-brand" href="/">
-          <span className="portal-brand-mark">
-            <ShieldCheck size={21} />
-          </span>
-          <span>
-            <strong>
-              Qor<span>ğan</span>
-            </strong>
-            <small>AI trust intelligence</small>
-          </span>
-        </a>
-        <div className="portal-header-status">
-          <span className="status-pulse" /> TWO SPECIALIZED MODULES <i /> SECURE EXTERNAL ACCESS
-        </div>
-      </header>
-      <main className="portal-main">
-        <section className="portal-hero">
-          <div className="portal-eyebrow">
-            <Sparkles size={14} /> TRUST CONSOLE / SELECT A MODULE
-          </div>
-          <h1>
+    <div className="min-h-svh bg-canvas">
+      <Screen>
+        <TopBar
+          brand={
+            <a href="/" className="text-ink no-underline">
+              Qorğan
+            </a>
+          }
+          action={
+            <Button href="#modules" tone="dark" size="sm">
+              К модулям
+            </Button>
+          }
+        />
+        <Circuit />
+        {signals.map(({ Icon, className }) => (
+          <IconFrame className={className} key={className}>
+            <Icon size={16} strokeWidth={1.6} />
+          </IconFrame>
+        ))}
+        <Center>
+          <Badge>Выберите модуль</Badge>
+          <Heading>
             Intelligence for
             <br />
-            <em>uncertain signals.</em>
-          </h1>
-          <p>
+            uncertain signals.
+          </Heading>
+          <Text>
             Единый портал доступа к специализированным AI-инструментам для защиты личности и
             цифровой криминалистики. Выберите нужный модуль — он откроется в отдельном защищённом
             сервисе.
-          </p>
-          <div className="portal-hero-meta">
-            <span>
-              <LockKeyhole size={14} /> Сервисы работают независимо
-            </span>
-            <span>
-              <Fingerprint size={14} /> Evidence-led analysis
-            </span>
+          </Text>
+          <div className="mt-7">
+            <Button href="#modules" tone="mint">
+              К модулям
+            </Button>
           </div>
+        </Center>
+      </Screen>
+      <main className="relative z-[1] mx-auto max-w-[1160px] px-[19px] pt-[54px] pb-7 md:px-[34px] md:pt-[78px] md:pb-9">
+        <section id="modules" className="grid grid-cols-1 gap-[17px] md:grid-cols-2" aria-label="Доступные модули">
+          {services.map((service) => (
+            <ModuleCard key={service.href} {...service} />
+          ))}
         </section>
-        <section className="service-grid" aria-label="Доступные AI-модули">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <a
-                className={`service-card service-card--${service.accent}`}
-                href={service.href}
-                key={service.href}
-              >
-                <div className="service-card-top">
-                  <span className="service-number">{service.number}</span>
-                  <span className="service-tag">{service.tag}</span>
-                  <span className="service-arrow">
-                    <ArrowUpRight size={19} />
-                  </span>
-                </div>
-                <div className="service-icon">
-                  <Icon size={27} />
-                </div>
-                <h2>
-                  {service.title.split("\n").map((line) => (
-                    <span key={line}>
-                      {line}
-                      <br />
-                    </span>
-                  ))}
-                </h2>
-                <p>{service.description}</p>
-                <div className="service-points">
-                  {service.points.map((point) => (
-                    <span key={point}>
-                      <i />
-                      {point}
-                    </span>
-                  ))}
-                </div>
-                <div className="service-cta">
-                  {service.cta}
-                  <ArrowUpRight size={16} />
-                </div>
-              </a>
-            );
-          })}
-        </section>
-        <section className="portal-footer-note">
-          <div className="footer-line" />
-          <span>
-            <ShieldCheck size={15} /> Каждое решение открывается в своём опубликованном сервисе.
-            Ваши модули и их внутренняя логика остаются независимыми.
-          </span>
-          <div className="footer-line" />
-        </section>
+        <SplitNote>
+          <ShieldCheck size={15} /> Каждое решение открывается в своём опубликованном сервисе. Ваши
+          модули и их внутренняя логика остаются независимыми.
+        </SplitNote>
       </main>
-      <footer className="portal-footer">
+      <FooterBar>
         <span>QORĞAN / TRUST INFRASTRUCTURE</span>
         <span>AI · CYBERSECURITY · DIGITAL FORENSICS</span>
         <span>© 2026</span>
-      </footer>
+      </FooterBar>
     </div>
   );
 }
