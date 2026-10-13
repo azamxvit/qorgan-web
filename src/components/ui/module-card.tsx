@@ -47,6 +47,8 @@ export function ModuleCard({
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noreferrer"
       className={`group relative flex min-h-[390px] flex-col overflow-hidden rounded-[19px] p-[22px] no-underline shadow-[0_25px_80px_rgba(2,7,31,0.25)] transition duration-200 md:min-h-[430px] md:p-[26px] ${style.card}`}
     >
       <span

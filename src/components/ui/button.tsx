@@ -15,15 +15,19 @@ export function Button({
   children,
   tone = "dark",
   size = "md",
+  external = false,
 }: {
   href: string;
   children: ReactNode;
   tone?: keyof typeof tones;
   size?: keyof typeof sizes;
+  external?: boolean;
 }) {
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
       className={`inline-flex items-center justify-center rounded-full no-underline ${tones[tone]} ${sizes[size]}`}
     >
       {children}
