@@ -1,0 +1,11 @@
+.demoIdentityStage {
+  background-image: radial-gradient(ellipse at center, #163c2c 0%, #0a1711 75%);
+}
+.demoScanGrid {
+  background-image:
+    linear-gradient(rgba(58, 217, 154, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 217, 154, 0.04) 1px, transparent 1px);
+}
+.demoDocumentStage {
+  background-image: radial-gradient(ellipse at center, #302443 0%, #16111f 75%);
+}

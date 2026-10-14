@@ -1,0 +1,18 @@
+.heroGlow {
+  background-image:
+    radial-gradient(ellipse at 50% 44%, rgba(255, 255, 255, 0.085), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.055), transparent 50%);
+}
+.heroLightUpper {
+  top: 26%;
+}
+.heroLightLower {
+  top: 78%;
+}
+.heroEndFade {
+  position: absolute;
+  inset: auto 0 0;
+  height: 72px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--color-canvas));
+}
