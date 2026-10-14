@@ -1,16 +1,19 @@
+import { headerContent, heroContent, siteContent } from "./content";
+import Link from "next/link";
 import Image from "next/image";
 import { Fingerprint, KeyRound, LockKeyhole, Shield } from "lucide-react";
-import { Actions } from "@/components/ui/actions";
-import { Badge } from "@/components/ui/badge";
+import { Actions } from "@/components/landing/actions";
+import { Badge } from "@/components/landing/badge";
 import { Button } from "@/components/ui/button";
-import { Center } from "@/components/ui/center";
-import { Circuit } from "@/components/ui/circuit";
-import { Heading } from "@/components/ui/heading";
-import { IconFrame } from "@/components/ui/icon-frame";
+import { Center } from "@/components/landing/center";
+import { Circuit } from "@/components/landing/circuit";
+import { Heading } from "@/components/landing/heading";
+import { IconFrame } from "@/components/landing/icon-frame";
 import { NavLink } from "@/components/ui/nav-link";
-import { Screen } from "@/components/ui/screen";
-import { Text } from "@/components/ui/text";
+import { Screen } from "@/components/landing/screen";
+import { Text } from "@/components/landing/text";
 import { TopBar } from "@/components/ui/top-bar";
+import { HeroShield } from "@/components/landing/hero-shield";
 
 const signals = [
   { Icon: Shield, tone: "mint", className: "top-[34%] left-[8%]" },
@@ -23,32 +26,39 @@ export function Hero() {
   return (
     <Screen>
       <TopBar
+        navLabel={headerContent.navLabel}
         brand={
-          <a
-            href="/"
-            aria-label="Qorğan — главная"
+          <Link
+            href={siteContent.homeHref}
+            aria-label={siteContent.homeLabel}
             className="flex items-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-mint"
           >
             <Image
               src="/qorgan-logo.svg"
-              alt="Qorğan"
+              alt={siteContent.name}
               width={930}
               height={288}
               className="h-auto w-32 lg:w-[156px]"
               unoptimized
             />
-          </a>
+          </Link>
         }
         nav={
           <>
-            <NavLink href="#modules">Проверки</NavLink>
-            <NavLink href="#how">Как устроено</NavLink>
-            <NavLink href="#watch">Инструкции</NavLink>
+            {headerContent.links.map((link) => (
+              <NavLink key={link.href} href={link.href}>
+                {link.label}
+              </NavLink>
+            ))}
           </>
         }
         action={
-          <Button href="#modules" tone="dark" size="sm">
-            К модулям
+          <Button
+            href={headerContent.action.href}
+            tone={headerContent.action.tone}
+            size={headerContent.action.size}
+          >
+            {headerContent.action.label}
           </Button>
         }
       />
@@ -59,25 +69,22 @@ export function Hero() {
         </IconFrame>
       ))}
       <Center>
-        <Badge>Выберите модуль</Badge>
+        <Badge>{heroContent.badge}</Badge>
         <Heading>
-          Intelligence for
+          {heroContent.title[0]}
           <br />
-          uncertain signals.
+          {heroContent.title[1]}
         </Heading>
-        <Text>
-          Единый портал доступа к специализированным AI-инструментам для защиты личности и цифровой
-          криминалистики. Выберите нужный модуль — он откроется в отдельном защищённом сервисе.
-        </Text>
+        <Text>{heroContent.text}</Text>
         <Actions>
-          <Button href="#modules" tone="mint">
-            К модулям
-          </Button>
-          <Button href="#how" tone="dark">
-            Как устроено
-          </Button>
+          {heroContent.buttons.map((button) => (
+            <Button key={button.href} href={button.href} tone={button.tone}>
+              {button.label}
+            </Button>
+          ))}
         </Actions>
       </Center>
+      <HeroShield />
     </Screen>
   );
 }

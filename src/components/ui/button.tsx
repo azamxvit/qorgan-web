@@ -27,7 +27,7 @@ export function Button({
     <a
       href={href}
       target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className={`inline-flex items-center justify-center rounded-full no-underline ${tones[tone]} ${sizes[size]}`}
     >
       {children}

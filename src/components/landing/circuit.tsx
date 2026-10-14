@@ -64,7 +64,13 @@ export function Circuit() {
             vectorEffect="non-scaling-stroke"
           />
         ))}
-        {[[465, 220], [550, 235], [410, 360], [720, 365], [445, 405]].map(([cx, cy]) => (
+        {[
+          [465, 220],
+          [550, 235],
+          [410, 360],
+          [720, 365],
+          [445, 405],
+        ].map(([cx, cy]) => (
           <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.8" fill="white" fillOpacity="0.18" />
         ))}
       </g>

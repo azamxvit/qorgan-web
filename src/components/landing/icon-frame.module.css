@@ -1,0 +1,11 @@
+.signalFrameMint {
+  background-image: linear-gradient(110deg, rgba(76, 205, 153, 0.55), rgba(76, 205, 153, 0.12));
+  box-shadow: 0 0 18px rgba(76, 205, 153, 0.04);
+}
+.signalFrameYellow {
+  background-image: linear-gradient(110deg, rgba(255, 244, 85, 0.5), rgba(255, 244, 85, 0.1));
+  box-shadow: 0 0 18px rgba(255, 244, 85, 0.03);
+}
+.signalFrameInner {
+  background-color: #0a0c0b;
+}

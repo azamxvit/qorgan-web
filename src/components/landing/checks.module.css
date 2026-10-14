@@ -1,0 +1,9 @@
+.guideCoverMint {
+  background-image: radial-gradient(ellipse at center, #163c2c, #090e0b);
+}
+.guideCoverCyan {
+  background-image: radial-gradient(ellipse at center, #12323b, #080d10);
+}
+.guideCoverViolet {
+  background-image: radial-gradient(ellipse at center, #31213f, #0e0a12);
+}
